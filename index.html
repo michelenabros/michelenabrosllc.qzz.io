@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michelena Bros LLC – Kansas City</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --red: #cc0000;
+    --green: #2d7a2d;
+    --steel: #1a1f1a;
+    --mid: #6b6b6b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 2rem;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 3px solid var(--red);
+  }
+  .nav-logo svg { height: 48px; width: auto; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--white); text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+  .lang-btn { background: none; border: 1px solid var(--green); color: var(--green); padding: 0.3rem 0.9rem; font-family: 'Barlow', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn:hover { background: var(--green); color: var(--white); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 9rem 2.5rem 5rem;
+    background: linear-gradient(135deg, rgba(204,0,0,0.08) 0%, transparent 60%), var(--black);
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: 'MB';
+    position: absolute; right: -1rem; bottom: -5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32vw; color: rgba(204,0,0,0.04);
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+  .hero-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 10vw, 8rem); line-height: 0.95; letter-spacing: 2px; }
+  .hero h1 span { color: var(--red); }
+  .hero-sub { margin-top: 1.5rem; font-size: 1.1rem; color: rgba(245,242,237,0.6); max-width: 520px; line-height: 1.7; }
+  .hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-red { background: var(--red); color: var(--white); padding: 0.9rem 2.2rem; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; display: inline-block; border: none; cursor: pointer; }
+  .btn-red:hover { background: #a80000; transform: translateY(-2px); }
+  .btn-ghost { border: 2px solid var(--white); color: var(--white); padding: 0.9rem 2.2rem; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; transition: all 0.2s; display: inline-block; }
+  .btn-ghost:hover { background: var(--white); color: var(--black); }
+  .hero-stats { margin-top: 4rem; display: flex; gap: 3rem; flex-wrap: wrap; }
+  .stat h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--red); letter-spacing: 1px; }
+  .stat p { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); }
+
+  section { padding: 5rem 2.5rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 0.5rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin-bottom: 0.75rem; }
+  .section-sub { color: rgba(245,242,237,0.55); font-size: 0.95rem; max-width: 480px; line-height: 1.7; margin-bottom: 3rem; }
+
+  #services { background: var(--steel); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: rgba(255,255,255,0.06); }
+  .service-card { background: var(--steel); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background 0.2s; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--green); transition: height 0.3s; }
+  .service-card:hover { background: #222822; }
+  .service-card:hover::before { height: 100%; }
+  .service-card .icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .service-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.88rem; color: rgba(245,242,237,0.55); line-height: 1.6; }
+
+  #inventory { background: var(--black); }
+  .inv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
+  .inv-card { border: 1px solid rgba(255,255,255,0.08); padding: 2rem 1rem; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .inv-card:hover { border-color: var(--green); transform: translateY(-5px); }
+  .inv-card .icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .inv-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 0.25rem; }
+  .inv-card p { font-size: 0.78rem; color: var(--mid); }
+
+  #why { background: linear-gradient(135deg, #0d1f0d 0%, #1a0000 100%); border-top: 3px solid var(--green); border-bottom: 3px solid var(--red); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; }
+  .why-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--green); }
+  .why-item p { font-size: 0.9rem; line-height: 1.6; color: rgba(245,242,237,0.75); margin-top: 0.25rem; }
+
+  #contact { background: var(--steel); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
+  .contact-line { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+  .contact-line .icon { font-size: 1.3rem; margin-top: 0.1rem; }
+  .contact-line div { font-size: 0.9rem; color: rgba(245,242,237,0.65); }
+  .contact-line a { color: var(--green); text-decoration: none; font-weight: 600; }
+  .contact-line a:hover { text-decoration: underline; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input, .contact-form textarea, .contact-form select {
+    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white); padding: 0.85rem 1rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.95rem; width: 100%;
+    transition: border-color 0.2s;
+  }
+  .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--green); }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .contact-form select option { background: #1a1f1a; }
+
+  footer { background: #050505; border-top: 3px solid var(--red); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  footer svg { height: 36px; width: auto; }
+  footer p { font-size: 0.78rem; color: var(--mid); }
+  footer a { color: var(--green); }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60">
+      <g transform="translate(30,30)">
+        <circle cx="0" cy="0" r="28" fill="#0d1f0d" opacity="0.6"/>
+        <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(0)"/>
+        <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(90)"/>
+        <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(180)"/>
+        <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(270)"/>
+        <circle cx="0" cy="0" r="28" fill="none" stroke="#2d7a2d" stroke-width="3"/>
+        <circle cx="0" cy="0" r="5" fill="#2d7a2d"/>
+        <circle cx="0" cy="0" r="2.5" fill="#cc0000"/>
+      </g>
+      <line x1="68" y1="8" x2="68" y2="52" stroke="#2d7a2d" stroke-width="1.5"/>
+      <text x="78" y="36" font-family="'Bebas Neue',Impact,sans-serif" font-size="28" fill="#f5f2ed" letter-spacing="2">MICHELENA <tspan fill="#cc0000">BROS</tspan> <tspan font-size="16" fill="#2d7a2d">LLC</tspan></text>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services"><span class="en">Services</span><span class="es hidden">Servicios</span></a></li>
+    <li><a href="#inventory"><span class="en">Inventory</span><span class="es hidden">Inventario</span></a></li>
+    <li><a href="#why"><span class="en">Why Us</span><span class="es hidden">Por Qué</span></a></li>
+    <li><a href="#contact"><span class="en">Contact</span><span class="es hidden">Contacto</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()">ES / EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-tag"><span class="en">Kansas City's Motor Vehicle Specialists</span><span class="es hidden">Especialistas en Vehículos — Kansas City</span></p>
+  <h1><span class="en">WE BUY.<br><span style="color:var(--red)">WE SELL.</span><br>WE FIX.</span><span class="es hidden">COMPRAMOS.<br><span style="color:var(--red)">VENDEMOS.</span><br>REPARAMOS.</span></h1>
+  <p class="hero-sub"><span class="en">Cars, trucks, ATVs, boats, and heavy machinery. Sales, parts, and full mechanical service — all under one name.</span><span class="es hidden">Carros, camiones, ATVs, lanchas y maquinaria pesada. Ventas, refacciones y servicio mecánico completo.</span></p>
+  <div class="hero-cta">
+    <a href="#inventory" class="btn-red"><span class="en">Browse Inventory</span><span class="es hidden">Ver Inventario</span></a>
+    <a href="#contact" class="btn-ghost"><span class="en">Contact Us</span><span class="es hidden">Contáctanos</span></a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><h3>KC</h3><p><span class="en">Based</span><span class="es hidden">Basados</span></p></div>
+    <div class="stat"><h3>EN/ES</h3><p><span class="en">Bilingual</span><span class="es hidden">Bilingüe</span></p></div>
+    <div class="stat"><h3>24/7</h3><p><span class="en">Available</span><span class="es hidden">Disponibles</span></p></div>
+  </div>
+</section>
+
+<section id="services">
+  <p class="section-label"><span class="en">What We Do</span><span class="es hidden">Lo Que Hacemos</span></p>
+  <h2 class="section-title"><span class="en">Our Services</span><span class="es hidden">Nuestros Servicios</span></h2>
+  <p class="section-sub"><span class="en">From engine work to full vehicle transactions — we handle it all.</span><span class="es hidden">Desde trabajo de motor hasta transacciones completas — lo manejamos todo.</span></p>
+  <div class="services-grid">
+    <div class="service-card"><span class="icon">🔧</span><h3><span class="en">Mechanical Service</span><span class="es hidden">Servicio Mecánico</span></h3><p><span class="en">Engine diagnostics, repairs, tune-ups, and full mechanical work on cars and trucks.</span><span class="es hidden">Diagnóstico, reparaciones, afinaciones y trabajo mecánico completo en carros y camiones.</span></p></div>
+    <div class="service-card"><span class="icon">🚗</span><h3><span class="en">Buy & Sell Vehicles</span><span class="es hidden">Compra y Venta</span></h3><p><span class="en">Cars, trucks, salvage titles, fleet vehicles. Fair prices, fast transactions.</span><span class="es hidden">Carros, camiones, títulos salvage. Precios justos, transacciones rápidas.</span></p></div>
+    <div class="service-card"><span class="icon">⚙️</span><h3><span class="en">Parts & Accessories</span><span class="es hidden">Partes y Accesorios</span></h3><p><span class="en">New and used OEM and aftermarket parts for all makes and models.</span><span class="es hidden">Partes nuevas y usadas OEM y aftermarket para todas las marcas.</span></p></div>
+    <div class="service-card"><span class="icon">🏍️</span><h3><span class="en">ATVs & Powersports</span><span class="es hidden">ATVs y Deportes</span></h3><p><span class="en">Sales, service, and parts for ATVs, UTVs, dirt bikes, and powersport vehicles.</span><span class="es hidden">Ventas, servicio y partes para ATVs, UTVs y motos de tierra.</span></p></div>
+    <div class="service-card"><span class="icon">⛵</span><h3><span class="en">Boats & Watercraft</span><span class="es hidden">Lanchas y Embarcaciones</span></h3><p><span class="en">Buying and selling boats, jet skis, and watercraft of all sizes.</span><span class="es hidden">Compra y venta de lanchas, jet skis y embarcaciones de todo tipo.</span></p></div>
+    <div class="service-card"><span class="icon">🚜</span><h3><span class="en">Heavy Machinery</span><span class="es hidden">Maquinaria Pesada</span></h3><p><span class="en">Tractors, loaders, excavators, and commercial equipment — we buy, sell, and broker.</span><span class="es hidden">Tractores, cargadores, excavadoras y equipo comercial.</span></p></div>
+  </div>
+</section>
+
+<section id="inventory">
+  <p class="section-label"><span class="en">What We Have</span><span class="es hidden">Lo Que Tenemos</span></p>
+  <h2 class="section-title"><span class="en">Current Inventory</span><span class="es hidden">Inventario Actual</span></h2>
+  <p class="section-sub"><span class="en">Stock changes fast — call us for latest available units.</span><span class="es hidden">El inventario cambia rápido — llámanos para las últimas unidades.</span></p>
+  <div class="inv-grid">
+    <div class="inv-card"><span class="icon">🚗</span><h4><span class="en">Cars</span><span class="es hidden">Autos</span></h4><p><span class="en">Sedans, coupes, SUVs</span><span class="es hidden">Sedanes, cupés, SUVs</span></p></div>
+    <div class="inv-card"><span class="icon">🛻</span><h4><span class="en">Trucks</span><span class="es hidden">Camionetas</span></h4><p><span class="en">Work & personal</span><span class="es hidden">Trabajo y personal</span></p></div>
+    <div class="inv-card"><span class="icon">🏍️</span><h4>ATVs</h4><p><span class="en">All terrain</span><span class="es hidden">Todo terreno</span></p></div>
+    <div class="inv-card"><span class="icon">⛵</span><h4><span class="en">Boats</span><span class="es hidden">Lanchas</span></h4><p><span class="en">Fishing & fun</span><span class="es hidden">Pesca y recreo</span></p></div>
+    <div class="inv-card"><span class="icon">🚜</span><h4><span class="en">Machinery</span><span class="es hidden">Maquinaria</span></h4><p><span class="en">Commercial</span><span class="es hidden">Comercial</span></p></div>
+    <div class="inv-card"><span class="icon">🔩</span><h4><span class="en">Parts</span><span class="es hidden">Partes</span></h4><p><span class="en">New & used</span><span class="es hidden">Nuevas y usadas</span></p></div>
+  </div>
+</section>
+
+<section id="why">
+  <p class="section-label"><span class="en">Why Choose Us</span><span class="es hidden">Por Qué Elegirnos</span></p>
+  <h2 class="section-title"><span class="en">The Michelena Difference</span><span class="es hidden">La Diferencia Michelena</span></h2>
+  <p class="section-sub"><span class="en">Family-owned, bilingual, and built on trust in Kansas City.</span><span class="es hidden">Negocio familiar, bilingüe y construido sobre la confianza en Kansas City.</span></p>
+  <div class="why-grid">
+    <div class="why-item"><h3>EN/ES</h3><p><span class="en">Fully bilingual — English and Spanish service for all customers.</span><span class="es hidden">Completamente bilingüe — servicio en inglés y español.</span></p></div>
+    <div class="why-item"><h3>KC</h3><p><span class="en">Local Kansas City business — we know the community and the market.</span><span class="es hidden">Negocio local — conocemos la comunidad y el mercado de KC.</span></p></div>
+    <div class="why-item"><h3>ALL-IN</h3><p><span class="en">One stop for sales, service, and parts — no runaround.</span><span class="es hidden">Un solo lugar para ventas, servicio y partes.</span></p></div>
+    <div class="why-item"><h3>FAIR</h3><p><span class="en">Honest prices and straight deals — no hidden fees, no surprises.</span><span class="es hidden">Precios honestos y tratos directos — sin cargos ocultos.</span></p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label"><span class="en">Get In Touch</span><span class="es hidden">Contáctanos</span></p>
+  <h2 class="section-title"><span class="en">Contact Us</span><span class="es hidden">Contacto</span></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3><span class="en">Reach Out Anytime</span><span class="es hidden">Contáctanos Cuando Quieras</span></h3>
+      <div class="contact-line"><span class="icon">📞</span><div><strong>Phone / Teléfono</strong><br><a href="tel:8165354249">(816) 535-4249</a></div></div>
+      <div class="contact-line"><span class="icon">✉️</span><div><strong>Email</strong><br><a href="mailto:info@michelenabrosllc.qzz.io">info@michelenabrosllc.qzz.io</a></div></div>
+      <div class="contact-line"><span class="icon">📍</span><div><strong>Kansas City, MO</strong><br><span class="en">Serving KC Metro Area</span><span class="es hidden">Área Metropolitana de KC</span></div></div>
+      <div class="contact-line"><span class="icon">🕐</span><div><strong><span class="en">Hours</span><span class="es hidden">Horario</span></strong><br><span class="en">Call or text anytime</span><span class="es hidden">Llama o manda mensaje cuando quieras</span></div></div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="return false;">
+        <input type="text" placeholder="Name / Nombre" required>
+        <input type="tel" placeholder="Phone / Teléfono">
+        <select>
+          <option value="" disabled selected>I'm interested in... / Me interesa...</option>
+          <option>Buying a vehicle / Comprar vehículo</option>
+          <option>Selling a vehicle / Vender vehículo</option>
+          <option>Mechanical service / Servicio mecánico</option>
+          <option>Parts / Partes</option>
+          <option>ATV / Boat / Machinery</option>
+          <option>Other / Otro</option>
+        </select>
+        <textarea placeholder="Message / Mensaje"></textarea>
+        <button type="submit" class="btn-red"><span class="en">Send Message</span><span class="es hidden">Enviar Mensaje</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60">
+    <g transform="translate(30,30)">
+      <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(0)"/>
+      <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(90)"/>
+      <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(180)"/>
+      <path d="M0,0 C5,-10 18,-10 22,-22 C28,-38 18,-55 6,-52 C-4,-50 -6,-38 -2,-28 C2,-18 2,-8 0,0Z" fill="#cc0000" transform="rotate(270)"/>
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#2d7a2d" stroke-width="3"/>
+      <circle cx="0" cy="0" r="5" fill="#2d7a2d"/>
+    </g>
+    <line x1="68" y1="10" x2="68" y2="50" stroke="#2d7a2d" stroke-width="1.5"/>
+    <text x="78" y="35" font-family="'Bebas Neue',Impact,sans-serif" font-size="26" fill="#f5f2ed" letter-spacing="2">MICHELENA <tspan fill="#cc0000">BROS</tspan> <tspan font-size="14" fill="#2d7a2d">LLC</tspan></text>
+  </svg>
+  <p>© 2026 Michelena Bros LLC · Kansas City, MO · <a href="tel:8165354249">(816) 535-4249</a></p>
+</footer>
+
+<script>
+  let lang = 'en';
+  function toggleLang() {
+    lang = lang === 'en' ? 'es' : 'en';
+    const hide = lang === 'en' ? 'es' : 'en';
+    document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll('.' + hide).forEach(el => el.classList.add('hidden'));
+  }
+</script>
+</body>
+</html>
